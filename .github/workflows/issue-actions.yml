@@ -3,7 +3,7 @@ name: Issue-Actions
 on: issues
 
 jobs:
-  Test Action:
+  Test_Action:
     runs-on: ubuntu-latest
 
     name: Test Local Action
