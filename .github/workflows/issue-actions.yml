@@ -1,0 +1,19 @@
+name: Issue-Actions
+
+on: issues
+
+jobs:
+  Test Action:
+    runs-on: ubuntu-latest
+
+    name: Test Local Action
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Action
+        uses: ./
+        with:
+          tag: tag
+          env-variable: MY_TAG
+          default-value: 'missing'
+
