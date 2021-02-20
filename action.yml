@@ -29,7 +29,6 @@ runs:
       env:
         CONTAINS_TAG : ${{contains(github.event.issue.body, 'body-tag:')}}
         TAGS :  echo ${{ github.event.issue.body }} | grep -Po "(?<=body-tag:\s)(\w+)"
-      if: CONTAINS_TAG
       run: |
         echo $env.TAGS[0]
       shell: bash
