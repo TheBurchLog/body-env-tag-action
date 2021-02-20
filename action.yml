@@ -5,7 +5,7 @@ inputs:
   tag:
     description: 'The tag placed inside the Body of the Issue or Pull Request before the value is defined'
     required: false
-    default: 'body-tag'
+    default: 'body-tag:'
   env-variable:
     description: 'The environment variable to map the tag value to'
     required: false
@@ -24,12 +24,15 @@ runs:
   steps:
     - name: Extract Tag
       env:
-        CONTAINS_TAG : ${{contains(github.event.issue.body, 'body-tag:')}}
+        CONTAINS_TAG : ${{contains(github.event.issue.body, inputs.tag)}}
         TAGS : ${{inputs.default-value}}
       run: |
-        TAG=$(echo ${{ github.event.issue.body }} | grep -Po "(?<=body-tag:\s)(\w+)")
+        TAG=$(echo ${{ github.event.issue.body }} | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
         echo $TAG
         echo "TAGS=$TAG" >> $GITHUB_ENV
-        echo "${{env.TAGS}}"
+      shell: bash
+
+    - name: Display Tag
+      run: echo "${{env.TAGS}}"
       shell: bash
 
