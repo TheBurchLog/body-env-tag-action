@@ -42,7 +42,7 @@ runs:
             if ${{inputs.tag-position}} == -1
             then
               RETURN_TAG=$tag
-            elif
+            elif ${{inputs.tag-position}} == $i
               RETURN_TAG=$tag
               break
             fi
