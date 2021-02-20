@@ -28,6 +28,6 @@ runs:
         TAGS : ${{inputs.default-value}}
       run: |
         echo 'TAGS=$(${{ github.event.issue.body }} | grep -Po "(?<=body-tag:\s)(\w+)")' >> $GITHUB_ENV
-        echo $TAGS
+        echo "${{env.TAGS}}"
       shell: bash
 
