@@ -21,6 +21,8 @@ outputs:
 
 runs:
   using: "composite"
+  env:
+    tags: null
   steps:
     - run: |
         tags = [[echo ${{ github.event.issue.body }} | grep -Po "(?<=body-tag:\s)(\w+)"]]
