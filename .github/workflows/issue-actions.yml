@@ -5,6 +5,8 @@ on: issues
 jobs:
   Test_Action:
     runs-on: ubuntu-latest
+    env:
+      MY_TAG: 'nope'
 
     name: Test Local Action
     steps:
@@ -16,4 +18,8 @@ jobs:
           tag: 'body-tag:'
           env-variable: 'MY_TAG'
           default-value: 'missing'
+
+      - name: Test
+        shell: bash
+        run: echo "${{env.MY_TAG}}"
 

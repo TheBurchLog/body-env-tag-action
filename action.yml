@@ -31,7 +31,10 @@ runs:
         echo "PARSE-TAGS=$TAGS" >> $GITHUB_ENV
       shell: bash
 
-    - name: Display Tag
+    - name: Setting Tag
       run: echo "${{env.PARSE-TAGS}}"
       shell: bash
+
+    - name: Apply Tag
+      run: echo "${{inputs.env-variable}}=$TAGS" >> $GITHUB_ENV
 
