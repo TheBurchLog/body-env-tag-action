@@ -37,4 +37,5 @@ runs:
 
     - name: Apply Tag
       run: echo "${{inputs.env-variable}}=$TAGS" >> $GITHUB_ENV
+      shell: bash
 
