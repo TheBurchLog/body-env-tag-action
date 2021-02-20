@@ -14,6 +14,10 @@ inputs:
     description: 'If the tag is not found, the default value to be provided'
     required: false
     default: null
+  tag-position:
+    description: 'If multiple tags are found, which tag position should be returned (-1 = last)'
+    required: false
+    default: 0
 
 outputs:
   tag-value:
@@ -22,23 +26,29 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Extract Tag First
+    - name: Extract Tag
       env:
         CONTAINS_TAG : ${{contains(github.event.issue.body, inputs.tag)}}
       run: |
+        RETURN_TAG=${{inputs.default-value}}
         if $CONTAINS_TAG
         then
           TAGS=$(echo ${{ github.event.issue.body }} | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
-          echo $TAGS
-          echo "There are ${#TAGS[*]} tags"
-          RETURN_TAG=${{inputs.default-value}}
+          echo $TAGS  
+          i=0    
           for tag in $TAGS
           do
-            RETURN_TAG=$tag
-            echo "Loop $tag"
-            break
+            echo "Loop $i $tag"
+            if ${{inputs.tag-position}} == -1
+            then
+              RETURN_TAG=$tag
+            elif
+              RETURN_TAG=$tag
+              break
+            fi
+            i=$((i+1))
           done
-          echo "${{inputs.env-variable}}=$RETURN_TAG" >> $GITHUB_ENV
         fi
+        echo "${{inputs.env-variable}}=$RETURN_TAG" >> $GITHUB_ENV
       shell: bash
 
