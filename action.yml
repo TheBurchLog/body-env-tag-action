@@ -30,11 +30,12 @@ runs:
         TAGS=$(echo ${{ github.event.issue.body }} | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
         echo $TAGS
         echo "There are ${#TAGS[*]} tags"
-        RETURN_TAG="NONE"
+        RETURN_TAG=${{inputs.default-value}}
         for tag in $TAGS
         do
           RETURN_TAG=$tag
           echo "Loop $tag"
+          break
         done
         echo "PARSE-TAGS=${RETURN_TAG}" >> $GITHUB_ENV
       shell: bash
