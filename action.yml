@@ -19,13 +19,15 @@ outputs:
   tag-value:
     description: 'The Tag value assigned'
 
+env:
+    tags: null
+
 runs:
   using: "composite"
-  env:
-    tags: null
+
   steps:
     - run: |
-        tags = [[echo ${{ github.event.issue.body }} | grep -Po "(?<=body-tag:\s)(\w+)"]]
-        echo $tags[0]
+        env.tags = [[echo ${{ github.event.issue.body }} | grep -Po "(?<=body-tag:\s)(\w+)"]]
+        echo $env.tags[0]
       shell: bash
 
