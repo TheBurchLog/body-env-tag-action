@@ -31,7 +31,7 @@ runs:
         echo $TAGS
         IFS=' '
         read -a TAG_ARRAY <<< "$TAGS"
-        echo $TAG_ARRAY
+        echo "There are ${#strarr[*]} tags"
         echo "PARSE-TAGS=${TAGS_ARRAY[0]}" >> $GITHUB_ENV
       shell: bash
 
