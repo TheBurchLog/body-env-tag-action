@@ -20,6 +20,7 @@ outputs:
     description: 'The Tag value assigned'
 
 runs:
+  using: "composite"
   steps:
-    - run: echo "Issue body: ${{ github.event.issue.body }}"
+    - run: echo ${{ github.event.issue.body }}
       shell: bash
