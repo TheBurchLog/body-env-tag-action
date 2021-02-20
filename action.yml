@@ -21,4 +21,5 @@ outputs:
 
 runs:
   steps:
-    - echo "Issue body: ${{ github.event.issue.body }}"
+    - run: echo "Issue body: ${{ github.event.issue.body }}"
+      shell: bash
