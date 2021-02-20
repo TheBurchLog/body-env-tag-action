@@ -29,8 +29,8 @@ runs:
       run: |
         TAGS=$(echo ${{ github.event.issue.body }} | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
         echo $TAGS
-        IFS=' '
-        TAG_ARRAY = (${TAGS})
+        echo "There are ${#TAGS[*]} tags"
+        IFS=' ' read -r -a TAG_ARRAY <<< $TAGS
         echo "There are ${#TAGS_ARRAY[*]} tags"
         echo "PARSE-TAGS=${TAGS_ARRAY[0]}" >> $GITHUB_ENV
       shell: bash
