@@ -43,6 +43,7 @@ runs:
             then
               RETURN_TAG=$tag
             elif ${{inputs.tag-position}} == $i
+            then
               RETURN_TAG=$tag
               break
             fi
