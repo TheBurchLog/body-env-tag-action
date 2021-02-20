@@ -39,10 +39,10 @@ runs:
           for tag in $TAGS
           do
             echo "Loop $i $tag"
-            if ${{inputs.tag-position}} == -1
+            if [[ "${{inputs.tag-position}}" -eq -1 ]]
             then
               RETURN_TAG=$tag
-            elif ${{inputs.tag-position}} == $i
+            elif [[ ${{inputs.tag-position}} -eq $i ]]
             then
               RETURN_TAG=$tag
               break
