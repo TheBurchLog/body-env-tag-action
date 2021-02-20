@@ -27,8 +27,8 @@ runs:
         CONTAINS_TAG : ${{contains(github.event.issue.body, 'body-tag:')}}
         TAGS : ${{inputs.default-value}}
       run: |
-        extractor = $(echo ${{ github.event.issue.body }} | grep -Po "(?<=body-tag:\s)(\w+)")
-        echo "TAGS=$extractor" >> $GITHUB_ENV
+        TAG=$(echo ${{ github.event.issue.body }} | grep -Po "(?<=body-tag:\s)(\w+)")
+        echo "TAGS=$TAG" >> $GITHUB_ENV
         echo "${{env.TAGS}}"
       shell: bash
 
