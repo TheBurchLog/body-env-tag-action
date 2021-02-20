@@ -27,10 +27,10 @@ runs:
   steps:
     - name: Extract Tag
       env:
-        CONTAINS_TAG = ${{contains(github.event.issue.body, 'body-tag:')}}
-        TAGS = []
+        CONTAINS_TAG : ${{contains(github.event.issue.body, 'body-tag:')}}
+        TAGS :  echo ${{ github.event.issue.body }} | grep -Po "(?<=body-tag:\s)(\w+)"
+      if: CONTAINS_TAG
       run: |
-        [[echo ${{ github.event.issue.body }} | grep -Po "(?<=body-tag:\s)(\w+)"]] >> $env.TAGS
         echo $env.TAGS[0]
       shell: bash
 
