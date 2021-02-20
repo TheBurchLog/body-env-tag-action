@@ -25,14 +25,13 @@ runs:
     - name: Extract Tag
       env:
         CONTAINS_TAG : ${{contains(github.event.issue.body, inputs.tag)}}
-        TAGS : ${{inputs.default-value}}
+        PARSE-TAGS : ${{inputs.default-value}}
       run: |
-        TAG=$(echo ${{ github.event.issue.body }} | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
-        echo $TAG
-        echo "TAGS=$TAG" >> $GITHUB_ENV
+        TAGS=$(echo ${{ github.event.issue.body }} | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
+        echo "PARSE-TAGS=$TAGS" >> $GITHUB_ENV
       shell: bash
 
     - name: Display Tag
-      run: echo "${{env.TAGS}}"
+      run: echo "${{env.PARSE-TAGS}}"
       shell: bash
 
