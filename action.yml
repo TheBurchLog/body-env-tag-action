@@ -22,5 +22,5 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo ${{ github.event.issue.body }}
+    - run: echo ${{ github.event.issue.body }} | (?<=\body-tag:\s)(\w+)
       shell: bash
