@@ -18,6 +18,7 @@ jobs:
           tag: 'body-tag:'
           env-variable: 'MY_TAG'
           default-value: 'missing'
+          tag-position: -1
 
       - name: Test
         shell: bash
