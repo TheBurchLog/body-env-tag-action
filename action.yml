@@ -20,4 +20,5 @@ outputs:
     description: 'The Tag value assigned'
 
 runs:
-  echo "Issue body: ${{ github.event.issue.body }}"pr-actions.yml
+  steps:
+    - echo "Issue body: ${{ github.event.issue.body }}"
