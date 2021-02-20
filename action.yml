@@ -22,5 +22,8 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo ${{ github.event.issue.body }} | grep '(?<=\body-tag:\s)(\w+)'
+    - run: echo ${{ github.event.issue.body }} | grep -Po "(?<=body-tag:\s)(\w+)"
       shell: bash
+    - run: sh extractor.sh ${{ github.event.issue.body }} "body-tag:"
+      shell: bash
+
