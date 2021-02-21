@@ -26,7 +26,8 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Extract Tag
+    - name: Extract Issue Tag
+      if: github.event_name == ‘issue’ 
       env:
         CONTAINS_TAG : ${{contains(github.event.issue.body, inputs.tag)}}
       run: |
