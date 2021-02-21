@@ -29,11 +29,31 @@ runs:
     - name: Extract Issue Tag
       env:
         ISSUE_CONTAINS_TAG : ${{contains(github.event.issue.body, inputs.tag)}}
+        PR_CONTAINS_TAG : ${{contains(github.event.pull_request.body, inputs.tag)}}
       run: |
         RETURN_TAG=${{inputs.default-value}}
         if $ISSUE_CONTAINS_TAG
         then
           TAGS=$(echo ${{ github.event.issue.body }} | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
+          echo $TAGS  
+          i=0    
+          for tag in $TAGS
+          do
+            echo "Loop $i $tag"
+            if [[ "${{inputs.tag-position}}" -eq -1 ]]
+            then
+              RETURN_TAG=$tag
+            elif [[ ${{inputs.tag-position}} -eq $i ]]
+            then
+              RETURN_TAG=$tag
+              break
+            fi
+            i=$((i+1))
+          done
+        fi
+        if $PR_CONTAINS_TAG
+        then
+          TAGS=$(echo ${{ github.event.pull_request.body }} | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
           echo $TAGS  
           i=0    
           for tag in $TAGS
