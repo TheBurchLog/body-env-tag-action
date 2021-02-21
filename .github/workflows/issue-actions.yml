@@ -1,6 +1,6 @@
-name: Issue-Actions
+name: PR-Issue-Actions
 
-on: issues
+on: [issues, pull_request]
 
 jobs:
   Test_Action:
