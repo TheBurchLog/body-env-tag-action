@@ -8,6 +8,7 @@ try {
   const default_value = core.getInput('default-value');
   const tag_position = core.getInput('tag-position');
 
+  // Find the correct body obj
   if ('issue' in github.context.payload){
     var issue_body = github.context.payload.issue.body;
   }
