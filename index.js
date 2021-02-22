@@ -8,7 +8,7 @@ try {
   const default_value = core.getInput('default-value');
   const tag_position = core.getInput('tag-position');
 
-  const issue_body = github.context.payload.issue.body;
+  var issue_body = github.context.payload.issue.body;
   issue_body = issue_body.replace(/(\r\n|\n|\r)/gm, " ");
   console.log(`The issue body: ${issue_body}`);
 
