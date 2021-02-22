@@ -9,6 +9,7 @@ try {
   const tag_position = core.getInput('tag-position');
 
   const issue_body = github.context.payload.issue.body;
+  issue_body = issue_body.replace(/(\r\n|\n|\r)/gm, " ");
   console.log(`The issue body: ${issue_body}`);
 
   const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
