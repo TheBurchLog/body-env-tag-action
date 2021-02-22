@@ -9,9 +9,18 @@ When there are dependencies in your actions that are unique only to that Pull Re
 you can define that in your Pull Request body and extract those variables to make
 decisions on which action to run next.
 
-**Pull Request**
+**Pull Request Example 1**
 ``` 
 This Pull request requires dependency-version: 2.3
+```
+
+**Pull Request Example 2**
+``` markdown
+This Pull request requires:
+
+| package | version|
+| --- | ---|
+| dependency-version: | 2.3 |
 ```
 
 **Action**
