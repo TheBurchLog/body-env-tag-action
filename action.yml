@@ -17,11 +17,7 @@ inputs:
   tag-position:
     description: 'If multiple tags are found, which tag position should be returned (-1 = last). If tag position is higher than found, the default value is provided' 
     required: false
-    default: 0
-
-outputs:
-  tag-value:
-    description: 'The Tag value assigned'
+    default: -1
 
 runs:
   using: "composite"

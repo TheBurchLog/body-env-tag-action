@@ -1,0 +1,26 @@
+name: PR-Issue-Actions
+
+on: [issues, pull_request]
+
+jobs:
+  Test_Action:
+    runs-on: ubuntu-latest
+    env:
+      MY_TAG: 'nope'
+
+    name: Test Local Action
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Action
+        uses: ./
+        with:
+          tag: 'body-tag:'
+          env-variable: 'MY_TAG'
+          default-value: 'missing'
+          tag-position: -1
+
+      - name: Test
+        shell: bash
+        run: echo "${{env.MY_TAG}}"
+
