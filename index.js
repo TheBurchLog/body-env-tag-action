@@ -15,18 +15,18 @@ try {
   const body_words = issue_body.split(" ");
 
   var i;
-  var tag_position = 0;
+  var tags_found = 0;
   for (i = 0; i < body_words.length; i++){
     if (body_words[i] == tag){
         if ((i + 1) < body_words.length){
             if (tag_position == -1){
               value = body_words[i + 1];
             }
-            else if (i == tag_position){
+            else if (tags_found == tag_position){
               value = body_words[i + 1];
               break;
             }
-            tag_position++;
+            tags_found++;
         }
     }
   }
