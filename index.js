@@ -11,8 +11,11 @@ try {
   const context = JSON.stringify(github.context, undefined, 2)
   console.log(`The context payload: ${context}`);
 
-  const issue_body = context.issue.body;
-  console.log(`The issue payload: ${issue_body}`);
+  const issue = context.issue;
+  console.log(`The issue: ${issue}`);
+
+  const issue_body = context.issue["body"];
+  console.log(`The issue body: ${issue_body}`);
 
   const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
 
