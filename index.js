@@ -13,7 +13,7 @@ try {
 
   const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
 
-  const tags = issue_body.match(re);
+  const tags = re.exec(issue_body)
   console.log(`The tags: ${tags}`);
 
   console.log(`Tag Position: ${tag_position}`)
