@@ -13,13 +13,13 @@ try {
   console.log(`The issue body: ${issue_body}`);
 
   //const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
-  const re = new RegExp("/" +tag + "(.*?)[\\s]/");
+  const re = new RegExp(tag + "(.*?)[\\s]");
 
 
-  const tags = re.exec(issue_body)
+  const tags = re.exec(issue_body);
   console.log(`The tags: ${tags}`);
 
-  console.log(`Tag Position: ${tag_position}`)
+  console.log(`Tag Position: ${tag_position}`);
   var value = default_value;
   var i;
   for (i = 0; i < tags.length; i++){
