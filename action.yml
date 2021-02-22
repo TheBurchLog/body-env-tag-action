@@ -1,6 +1,6 @@
 name: 'Body Tag Extractor'
 author: 'TheBurchBlog'
-description: 'The goal is to replicate tags like `fixes:` but make those variables exposed to the other actions through environment variables.'
+description: 'The goal is to utilize tags like `fixes:` and expose the values through environment variables.'
 inputs:
   tag:
     description: 'The tag placed inside the Body of the Issue or Pull Request before the value is defined'
