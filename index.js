@@ -12,7 +12,9 @@ try {
   issue_body = issue_body.replace(/(\r\n|\n|\r)/gm, " ");
   console.log(`The issue body: ${issue_body}`);
 
-  const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
+  //const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
+  const re = new RegExp("/" +tag + "(.*?)[\\s]/");
+
 
   const tags = re.exec(issue_body)
   console.log(`The tags: ${tags}`);
