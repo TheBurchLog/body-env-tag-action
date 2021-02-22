@@ -24,12 +24,6 @@ inputs:
     default: -1
 
 runs:
-  using: "composite"
-  env:
-    BODY: ""
-  steps:
-    - name: Extract Issue Tag
-      runs:
-        using: 'node12'
-        main: 'index.js'
+  using: 'node12'
+  main: 'index.js'
 
