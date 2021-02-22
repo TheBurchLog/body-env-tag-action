@@ -8,7 +8,17 @@ try {
   const default_value = core.getInput('default-value');
   const tag_position = core.getInput('tag-position');
 
-  var issue_body = github.context.payload.issue.body;
+  // Find the correct body obj
+  if ('issue' in github.context.payload){
+    var issue_body = github.context.payload.issue.body;
+  }
+  else if ('pull_request' in github.context.payload){
+    var issue_body = github.context.payload.pull_request.body;
+  }
+  else{
+    core.exportVariable(env_variable, default_value);
+    return;
+  }
   // Remove line breaks
   issue_body = issue_body.replace(/(\r\n|\n|\r)/gm, " ");
 
@@ -24,7 +34,7 @@ try {
               value = body_words[i + 1];
 
               // Handle Tables
-              if (value == "|" && (i + 2) < body_words.length){
+              if (value == "|" && (i + 3) < body_words.length && body_words[i+3] == "|"){
                 value = body_words[i + 2];
               }
             }
@@ -32,7 +42,7 @@ try {
               value = body_words[i + 1];
 
               // Handle Tables
-              if (value == "|" && (i + 2) < body_words.length){
+              if (value == "|" && (i + 3) < body_words.length && body_words[i+3] == "|"){
                 value = body_words[i + 2];
               }
               break;
