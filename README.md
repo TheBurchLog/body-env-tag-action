@@ -17,7 +17,7 @@ This Pull request requires dependency-version: 2.3
 **Action**
 ```yaml
 - name: Extract Dependency Version
-  uses: ./
+  uses: TheBurchLog/body-env-tag-action@2.0
   with:
     tag: 'dependency-version:'
     env-variable: 'dependency-version'
@@ -47,7 +47,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run Action
-        uses: actions/body-env-tag-action@v1
+        uses: TheBurchLog/body-env-tag-action@2.0
         with:
           tag: 'body-tag:'
           env-variable: 'MY_TAG'
