@@ -9,15 +9,15 @@ try {
   const tag_position = core.getInput('tag-position');
 
   const context = JSON.stringify(github.context, undefined, 2)
-  console.log(`The context payload: ${context}`);
+  console.log(`The context: ${context}`);
 
-  const payload = context["payload"];
-  console.log(`The issue: ${payload}`);
+  const payload = github.context.payload;
+  console.log(`The payload: ${payload}`);
 
-  const issue = context["payload"]["issue"];
+  const issue = github.context.payload.issue;
   console.log(`The issue: ${issue}`);
 
-  const issue_body = context["payload"]["issue"]["body"];
+  const issue_body = github.context.payload.issue.body;
   console.log(`The issue body: ${issue_body}`);
 
   const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
