@@ -11,8 +11,7 @@ try {
   const issue_body = github.context.payload.issue.body;
   console.log(`The issue body: ${issue_body}`);
 
-  // const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
-  const re = (?<=${tag}\s)(\w+);
+  const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
 
   const tags = issue_body.match(re);
   console.log(`The tags: ${tags}`);
