@@ -13,10 +13,10 @@ try {
 
   const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
 
-  const tags = re.exec(issue_body);
+  const tags = re.match(issue_body);
   console.log(`The tags: ${tags}`);
 
-  console.log('Tag Position: ${tag_position}')
+  console.log(`Tag Position: ${tag_position}`)
   var value = default_value;
   var i;
   for (i = 0; i < tags.length; i++){
