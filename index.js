@@ -9,9 +9,10 @@ try {
   const tag_position = core.getInput('tag-position');
 
   var issue_body = github.context.payload.issue.body;
+  // Remove line breaks
   issue_body = issue_body.replace(/(\r\n|\n|\r)/gm, " ");
-  console.log(`The issue body: ${issue_body}`);
 
+  // Regex wasn't working, so we have to manually do the look up
   const body_words = issue_body.split(" ");
 
   var i;
@@ -21,12 +22,16 @@ try {
         if ((i + 1) < body_words.length){
             if (tag_position == -1){
               value = body_words[i + 1];
+
+              // Handle Tables
               if (value == "|" && (i + 2) < body_words.length){
                 value = body_words[i + 2];
               }
             }
             else if (tags_found == tag_position){
               value = body_words[i + 1];
+
+              // Handle Tables
               if (value == "|" && (i + 2) < body_words.length){
                 value = body_words[i + 2];
               }
@@ -37,32 +42,9 @@ try {
     }
   }
 
-  //const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
-  // const re = new RegExp(tag + "(.*?)[\\s]");
-
-
-  // const tags = re.exec(issue_body);
-//  const tags = issue_body.matchAll(re);
-//  console.log(`The tags: ${tags}`);
-//
-//  console.log(`Tag Position: ${tag_position}`);
-//  var value = default_value;
-//  var i;
-//  for (i = 0; i < tags.length; i++){
-//    if (tag_position == -1){
-//      value = tags[i];
-//    }
-//    else if (i == tag_position){
-//      value = tags[i];
-//      break;
-//    }
-//  }
-
-
-
   core.exportVariable(env_variable, value);
 
-  console.log(`The event payload: ${value}`);
+  console.log(`The Tag Value: ${value}`);
 } catch (error) {
   core.setFailed(error.message);
 }
