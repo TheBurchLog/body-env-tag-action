@@ -24,6 +24,8 @@ This Pull request requires dependency-version: 2.3
     default-value: '2.0'
 ```
 
+Now their is an environment variable assigned after this action that contains the dependency version
+of 2.3 that can be utilized for an install script.
 
 ## Create Workflow
 
