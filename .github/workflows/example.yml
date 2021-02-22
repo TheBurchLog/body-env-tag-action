@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run Action
-        uses: TheBurchLog/body-env-tag-action@3.0
+        uses: TheBurchLog/body-env-tag-action@4.0
         with:
           tag: 'body-tag:'
           env-variable: 'MY_TAG'
