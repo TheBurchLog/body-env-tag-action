@@ -35,7 +35,13 @@ runs:
         if $ISSUE_CONTAINS_TAG
         then
 
-          TAGS=$(echo ${{ github.event.issue.body}} | sed 's/\r$/ /g' |grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
+          # Handling Marking Values
+          BODY = ${{ github.event.issue.body}}
+          BODY = $(echo $BODY | sed 's/\r$/ /g')
+          BODY = $(echo $BODY | sed 's/\|//g')
+          BODY = $(echo $BODY | sed 's/\//g')
+
+          TAGS=$(echo $BODY | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
           echo $TAGS  
           i=0    
           for tag in $TAGS
