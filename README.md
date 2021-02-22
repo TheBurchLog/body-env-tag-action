@@ -45,7 +45,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run Action
-        uses: ./
+        uses: actions/body-env-tag-action@v1
         with:
           tag: 'body-tag:'
           env-variable: 'MY_TAG'
