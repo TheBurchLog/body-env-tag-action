@@ -8,15 +8,6 @@ try {
   const default_value = core.getInput('default-value');
   const tag_position = core.getInput('tag-position');
 
-  const context = JSON.stringify(github.context, undefined, 2)
-  console.log(`The context: ${context}`);
-
-  const payload = github.context.payload;
-  console.log(`The payload: ${payload}`);
-
-  const issue = github.context.payload.issue;
-  console.log(`The issue: ${issue}`);
-
   const issue_body = github.context.payload.issue.body;
   console.log(`The issue body: ${issue_body}`);
 
@@ -25,11 +16,17 @@ try {
   const tags = re.exec(issue_body);
   console.log(`The tags: ${tags}`);
 
-
+  console.log('Tag Position: ${tag_position}')
   var value = default_value;
   var i;
   for (i = 0; i < tags.length; i++){
-    value = tags[i]
+    if (tag_position == -1 && ){
+      value = tags[i];
+    }
+    else if (i == tag_position){
+      value = tags[i];
+      break;
+    }
   }
 
 
