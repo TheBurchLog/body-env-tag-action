@@ -13,7 +13,7 @@ try {
 
   const tags = re.exec(issue_body);
 
-  value = default_value
+  value = default_value;
 
   core.exportVariable(env_variable, value);
 

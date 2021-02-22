@@ -1,0 +1,24 @@
+{
+  "name": "Body Tag Extractor",
+  "version": "1.0.0",
+  "description": "The goal is to utilize tags like `fixes:` and expose the values through environment variables.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheBurchLog/body-env-tag-action.git"
+  },
+  "keywords": [],
+  "author": "TheBurchLog",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheBurchLog/body-env-tag-action/issues"
+  },
+  "homepage": "https://github.com/TheBurchLog/body-env-tag-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.1.0",
+    "@actions/github": "^1.1.0"
+  }
+}
