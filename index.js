@@ -9,8 +9,8 @@ try {
   const tag_position = core.getInput('tag-position');
 
 
-  var value = default_value;
-  console.log(`The Default Value: ${value}`);
+  var output_value = default_value;
+  console.log(`The Default Value: ${output_value}`);
 
   var issue_body = null;
 
@@ -58,9 +58,8 @@ try {
       }
   }
 
-  core.exportVariable(env_variable, value);
-
   console.log(`The Tag Value: ${value}`);
+  core.exportVariable(env_variable, value);
   }
 } catch (error) {
   core.setFailed(error.message);
