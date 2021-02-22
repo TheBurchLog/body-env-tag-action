@@ -1,4 +1,4 @@
-name: PR-Issue-Actions
+name: Example
 
 on: [issues, pull_request]
 
