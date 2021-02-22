@@ -8,7 +8,10 @@ try {
   const default_value = core.getInput('default-value');
   const tag_position = core.getInput('tag-position');
 
-  const issue_body = github.event.issue.body;
+  const context = JSON.stringify(github.context, undefined, 2)
+  console.log(`The event payload: ${context}`);
+
+  const issue_body = github.context.issue.body;
   const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
 
   const tags = re.exec(issue_body);
