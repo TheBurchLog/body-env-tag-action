@@ -34,8 +34,9 @@ runs:
         RETURN_TAG=${{inputs.default-value}}
         if $ISSUE_CONTAINS_TAG
         then
-          echo ${{ github.event.issue.body }}
-          BODY= sed "s/\n/ /g; s/\r/ /g;" <<< ${{ github.event.issue.body }}
+
+          BODY= sed "s/\r\n/ /g" <<< ${{ github.event.issue.body }}
+          echo $BODY
           TAGS=$(echo $BODY | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
           echo $TAGS
           i=0    
