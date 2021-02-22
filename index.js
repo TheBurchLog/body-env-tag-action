@@ -8,11 +8,16 @@ try {
   const default_value = core.getInput('default-value');
   const tag_position = core.getInput('tag-position');
 
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
-
-
-  var issue_body = github.context.payload.issue.body;
+  if ('issue' in github.context.payload){
+    var issue_body = github.context.payload.issue.body;
+  }
+  else if ('pull_request' in github.context.payload){
+    var issue_body = github.context.payload.pull_request.body;
+  }
+  else{
+    core.exportVariable(env_variable, default_value);
+    return;
+  }
   // Remove line breaks
   issue_body = issue_body.replace(/(\r\n|\n|\r)/gm, " ");
 
