@@ -21,9 +21,15 @@ try {
         if ((i + 1) < body_words.length){
             if (tag_position == -1){
               value = body_words[i + 1];
+              if (value == "|" and i + 2) < body_words.length){
+                value = body_words[i + 2];
+              }
             }
             else if (tags_found == tag_position){
               value = body_words[i + 1];
+              if (value == "|" and i + 2) < body_words.length){
+                value = body_words[i + 2];
+              }
               break;
             }
             tags_found++;
