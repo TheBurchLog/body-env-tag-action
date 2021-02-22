@@ -11,6 +11,7 @@ try {
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
 
+
   var issue_body = github.context.payload.issue.body;
   // Remove line breaks
   issue_body = issue_body.replace(/(\r\n|\n|\r)/gm, " ");
