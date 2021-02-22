@@ -35,6 +35,9 @@ runs:
         if $ISSUE_CONTAINS_TAG
         then
           BODY=${{ github.event.issue.body }}
+          BODY="${BODY//$'%'/ }"
+          BODY="${BODY//$'\n'/ }"
+          BODY="${BODY//$'\r'/ }"
           TAGS=$(echo ${BODY//\r/} | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
           echo $TAGS
           i=0    
