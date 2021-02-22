@@ -12,11 +12,12 @@ try {
   issue_body = issue_body.replace(/(\r\n|\n|\r)/gm, " ");
   console.log(`The issue body: ${issue_body}`);
 
-  //const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
-  const re = new RegExp(tag + "(.*?)[\\s]");
+  const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
+  // const re = new RegExp(tag + "(.*?)[\\s]");
 
 
-  const tags = re.exec(issue_body);
+  // const tags = re.exec(issue_body);
+  const tags = issue_body.matchAll(re);
   console.log(`The tags: ${tags}`);
 
   console.log(`Tag Position: ${tag_position}`);
