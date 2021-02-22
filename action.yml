@@ -34,7 +34,7 @@ runs:
         RETURN_TAG=${{inputs.default-value}}
         if $ISSUE_CONTAINS_TAG
         then
-          TAGS=$(echo -e ${BODY//\r/} | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
+          TAGS=$(echo ${BODY//\r/} | grep -Po "(?<=${{inputs.tag}}\s)(\w+)")
           echo $TAGS
           i=0    
           for tag in $TAGS
