@@ -20,7 +20,7 @@ try {
   var value = default_value;
   var i;
   for (i = 0; i < tags.length; i++){
-    if (tag_position == -1 && ){
+    if (tag_position == -1){
       value = tags[i];
     }
     else if (i == tag_position){
