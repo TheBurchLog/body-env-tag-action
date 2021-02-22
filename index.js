@@ -9,14 +9,22 @@ try {
   const tag_position = core.getInput('tag-position');
 
   const context = JSON.stringify(github.context, undefined, 2)
-  console.log(`The event payload: ${context}`);
+  // console.log(`The event payload: ${context}`);
 
   const issue_body = github.context.issue.body;
+  console.log(`The event payload: ${issue_body}`);
+
   const re = new RegExp("(?<=" + tag + "\\s)(\\w+)");
 
   const tags = re.exec(issue_body);
 
-  value = default_value;
+  var value = default_value;
+  var i;
+  for (i = 0; i < tags.length; i++){
+    value = tags[i]
+  }
+
+
 
   core.exportVariable(env_variable, value);
 
